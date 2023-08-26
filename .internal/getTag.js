@@ -1,3 +1,5 @@
+// ✅
+
 const toString = Object.prototype.toString
 
 /**

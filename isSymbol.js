@@ -1,3 +1,5 @@
+// ✅
+
 import getTag from './.internal/getTag.js'
 
 /**
