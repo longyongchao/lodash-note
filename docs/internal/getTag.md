@@ -3,7 +3,7 @@
 
 **内部函数，不对外暴露**
 
-[source](../getTag.js)
+[source](../../.internal/getTag.js)
 
 ## 相关知识点
 * 在JavaScript中，`Object.prototype`是所有对象的原型（PS：实际上TS中的class是原型链的语法糖，在此不多赘述）。
