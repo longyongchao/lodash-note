@@ -20,4 +20,14 @@ function isSymbol(value) {
   return type == 'symbol' || (type === 'object' && value != null && getTag(value) == '[object Symbol]')
 }
 
+// const symbolValue = Symbol();
+// console.log(typeof symbolValue); // 输出: "symbol"
+// console.log(symbolValue.toString()); // 输出: "Symbol()"
+
+// const symbolObject = Object(symbolValue);
+// console.log(typeof symbolObject); // 输出: "object"
+// console.log(Object.prototype.toString.call(symbolObject)); // 输出: "[object Symbol]"
+
+// console.log(isSymbol(symbolObject));
+
 export default isSymbol
