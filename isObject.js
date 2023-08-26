@@ -26,4 +26,6 @@ function isObject(value) {
   return value != null && (type === 'object' || type === 'function')
 }
 
+// console.log(typeof null) // output object
+
 export default isObject
