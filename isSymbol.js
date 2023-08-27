@@ -1,4 +1,13 @@
-// ✅
+/**
+ * const symbolValue = Symbol();
+ * console.log(typeof symbolValue); // 输出: "symbol"
+ * console.log(symbolValue.toString()); // 输出: "Symbol()"
+ * 
+ * const symbolObject = Object(symbolValue);
+ * console.log(typeof symbolObject); // 输出: "object"
+ * console.log(Object.prototype.toString.call(symbolObject)); // 输出: "[object Symbol]"
+ * * 以上的`symbolObject`会被`isSymbol`判定为`true`。
+ */
 
 import getTag from './.internal/getTag.js'
 
