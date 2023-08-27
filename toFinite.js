@@ -1,3 +1,6 @@
+/** Note
+ * * The condition value === value can only be false when the value is NaN.
+ */
 import toNumber from './toNumber.js'
 
 /** Used as references for various `Number` constants. */
@@ -34,7 +37,7 @@ function toFinite(value) {
     const sign = (value < 0 ? -1 : 1)
     return sign * MAX_INTEGER
   }
-  return value === value ? value : 0
+  return value === value ? value : 0 // The condition value === value can only be false when the value is NaN
 }
 
 export default toFinite
