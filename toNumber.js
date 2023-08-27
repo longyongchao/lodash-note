@@ -1,3 +1,16 @@
+/** 笔记
+ * * NaN 表示非数字，用于表示数学运算的结果不是有效数字的情况。有内置方法 isNaN(value)用于判断类型，它是一个特殊的数值。
+ * 
+ * * What is the need for use reTrim Regex to remove whitespaces? Because the javascript built-in trim function have same effect.
+ * * Maybe the trim function realese version is ES5, anthour need to consider the old js code.
+ * 
+ * * The JS built-in parseInt function could specifies the base of the numeral system using radix paramenter(second position in function parameter).
+ * 
+ * * The unary plus operator can translate the number-like string to number. Such as:
+ * const numstr = '0xff';
+ * console.log(+numstr); // output 256
+ */
+
 import isObject from './isObject.js'
 import isSymbol from './isSymbol.js'
 
@@ -42,9 +55,11 @@ const freeParseInt = parseInt
  * // => 3.2
  */
 function toNumber(value) {
+  /** if value's type is Number, return itself directly */
   if (typeof value === 'number') {
     return value
   }
+  /** if value's type is Symbol, return NaN*/
   if (isSymbol(value)) {
     return NAN
   }
@@ -52,14 +67,22 @@ function toNumber(value) {
     const other = typeof value.valueOf === 'function' ? value.valueOf() : value
     value = isObject(other) ? `${other}` : other
   }
+  /** handle the value when its type is bool */
   if (typeof value !== 'string') {
     return value === 0 ? value : +value
   }
-  value = value.replace(reTrim, '')
-  const isBinary = reIsBinary.test(value)
-  return (isBinary || reIsOctal.test(value))
+  value = value.replace(reTrim, '') // removes any leading/trailing witespace.
+  const isBinary = reIsBinary.test(value) // check the value if binary.
+  return (isBinary || reIsOctal.test(value)) // lazy excute! Because the judge is OR logic.
     ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
     : (reIsBadHex.test(value) ? NAN : +value)
 }
 
-export default toNumber
+const testBool = false
+const str = '0xffff'
+
+console.log(+str)
+console.log(str.slice(2))
+console.log(toNumber(str))
+
+// export default toNumber
